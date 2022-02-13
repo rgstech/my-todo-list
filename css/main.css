@@ -1,0 +1,202 @@
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+body, html {
+
+  margin: 0;
+  padding: 0;
+
+}
+
+
+body {
+ 
+font-family: 'Open Sans', sans-serif;
+background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
+color: #fff;
+
+
+}
+
+
+.main-div {
+
+  width: 90%;
+  margin: 0 auto;
+  background-color: transparent; 
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  
+}
+
+
+.main-header {
+
+  text-align: center;
+
+}
+
+.section-form {
+
+  text-align: center;
+  background-color: #2A4553;
+  width: 70%;
+  margin: 0 auto;
+  height: 75px;
+  padding-top: 10px;
+  border-radius: 10px;
+
+}
+
+
+.section-form form input {
+
+  width: 40%;
+  height: 15%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.section-form form button {
+
+
+ background-color: #04AA6D;
+ color: white;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ font-weight: bolder;
+ 
+}
+
+
+.section-form form button  i {
+
+     margin-right: 5px;
+     font-size: 1.0rem;
+  
+ }
+ 
+
+
+.list {
+
+  text-align: center;
+  background: transparent;
+  width: 90%;
+  margin: 0 auto;
+  height: 500px;
+  margin-top: 20px;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow-y: auto;
+
+}
+
+
+.card  {
+
+     background-color: rgb(173, 47, 24);
+     width: 250px;
+     height: 200px;
+     border-radius: 10px;
+     position: relative;
+     margin-left: 5px;
+     margin-top: 5px;
+     word-break: break-all;
+     border-left: 10px solid rgba(10, 143, 11, 0.2);
+     overflow-x: auto;
+
+}
+
+
+.img-done {
+
+  width: 30px;
+  height: 30px;
+  margin-top: 20px;
+  float:left;
+
+}
+
+
+.img-close {
+
+ 
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  
+}
+
+
+.card button {
+
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-radius: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+   
+
+}
+
+
+.card h5 { 
+
+    margin-top: 50px;
+    font-size: 1.0rem;
+}
+
+
+.done {
+  background-color: #4caf50;
+  text-decoration: line-through;
+  
+}
+
+/*  ########## progress bar ############## */
+
+.tasks-progress {
+
+  position: relative;
+  width: 70%;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 8px;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.progress-bar {
+  position: absolute;
+  border-radius: 8px;
+  height: 100%;
+  background-color: #4caf50;
+  align-self: flex-start;
+}
+
+.progress-value {
+  z-index: 1;
+}
