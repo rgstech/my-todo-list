@@ -56,7 +56,7 @@ document.addEventListener( "DOMContentLoaded", function () {
 
       }
 
-      function initApp() {
+      function initApp() { // init the app and events
 
         //inicializa app / eventos
         clearList();
@@ -82,7 +82,7 @@ document.addEventListener( "DOMContentLoaded", function () {
       }
 
 
-      function addDoneIcon( _id = null ) { //so para adicionar ou nao o icone pronto
+      function addDoneIcon( _id = null ) { //so para adicionar ou nao o icone pronto // function just to add or not the done icon
           
         if (!_id) { return; }
 
@@ -208,7 +208,7 @@ document.addEventListener( "DOMContentLoaded", function () {
 
         let cards = document.getElementsByClassName("card");
 
-        if (cards.length >= 0) {
+        if (cards.length > 0) {
           for (let card of cards) {
             card.addEventListener("click", doneTask);
           }
@@ -338,5 +338,5 @@ document.addEventListener( "DOMContentLoaded", function () {
 
     
 
-      initApp(); //inicializa aplicação
+      initApp(); //inicializa aplicação / init the application
     }, false ); //end addEventlistener on document
