@@ -84,23 +84,25 @@ document.addEventListener( "DOMContentLoaded", function () {
 
       function addDoneIcon( _id = null ) { //so para adicionar ou nao o icone pronto // function just to add or not the done icon
           
-        if (!_id) { return; }
+          if (!_id) { return; }
 
-        let elCard = document.querySelector(`div[_id = '${_id}']`);
+          let elCard = document.querySelector(`div[_id = '${_id}']`);
 
-        if (!elCard) { return; }    
+          if (!elCard) { return; }    
 
-       let doneIcon     =  elCard.querySelector('img')
-       let iconDisplay  =  doneIcon.getAttribute('style');
-       let displayValue =  iconDisplay.substring(9, 13); // extract value of display ex: none or block 
+          let doneIcon     =  elCard.querySelector('img')
+          let iconDisplay  =  doneIcon.getAttribute('style');
+          let displayValue =  iconDisplay.substring(9, 13); // extract value of display ex: none or block 
 
-            if(  displayValue &&  (displayValue == 'none' ) ) {
+          if(  displayValue &&  (displayValue == 'none' ) ) {
 
               doneIcon.style.display = 'block';
-            } else {
+
+          } else {
 
               doneIcon.style.display = 'none';
-             }
+
+          }
                 
 
        }
@@ -110,39 +112,37 @@ document.addEventListener( "DOMContentLoaded", function () {
 
         // mark as done or undone
    
-        if (!_id) {
-          return;
-        }
+         if (!_id) {
+           return;
+         }
 
-        let elCard = document.querySelector(`div[_id = '${_id}']`);
+         let elCard = document.querySelector(`div[_id = '${_id}']`);
 
-        if (!elCard) {
-          return;
-        }
+         if (!elCard) {
+           return;
+         }
 
-        if (elCard.classList.contains("done")) {
+         if (elCard.classList.contains("done")) {
 
-          elCard.classList.remove("done");
-          
-       
+           elCard.classList.remove("done");
+              
+         } else {
 
-        } else {
+           elCard.classList.add("done");
 
-          elCard.classList.add("done");
-
-        }
+         }
 
       } 
 
 
       function markTaskDone(_id = null) {
 
-        // mark as done or undone
-        if (!_id) { return; }
+         // mark as done or undone
+         if (!_id) { return; }
 
-        for (let key of ArTasks.keys()) {
+         for (let key of ArTasks.keys()) {
 
-            if (_id == ArTasks[key]._id) {
+             if (_id == ArTasks[key]._id) {
 
                 if (ArTasks[key].done) {
 
@@ -164,41 +164,41 @@ document.addEventListener( "DOMContentLoaded", function () {
 
       function deleteCard(ev) {
       
-        if (ev.target != this){ return; }
+         if (ev.target != this){ return; }
 
-        let _id = ev.target.parentNode.getAttribute("_id");
-        deleteTask(_id);
-        let del_el = document.querySelector(`div[_id='${_id}']`);
+         let _id = ev.target.parentNode.getAttribute("_id");
+         deleteTask(_id);
+         let del_el = document.querySelector(`div[_id='${_id}']`);
 
-        del_el.parentNode.removeChild(del_el);
+         del_el.parentNode.removeChild(del_el);
 
       }
 
       function deleteTask(_id) {
 
-        if (!_id) { return; }
+          if (!_id) { return; }
 
-        ArTasksTemp = ArTasks.filter((task) => {
-          return _id != task._id;
-        });
+          ArTasksTemp = ArTasks.filter((task) => {
+              return _id != task._id;
+          });
 
-        ArTasks = [];
-        ArTasks = [...ArTasksTemp];
+          ArTasks = [];
+          ArTasks = [...ArTasksTemp];
 
-        saveTasksDb();
-        updateProgressBar();
+          saveTasksDb();
+          updateProgressBar();
       }
 
 
       function doneTask(ev) {
 
-        if (ev.target != this) { return; } // if its not the parent ignore click event / se nao for o parent node ignora o click
+          if (ev.target != this) { return; } // if its not the parent ignore click event / se nao for o parent node ignora o click
 
-        let taskId = ev.target.getAttribute("_id");
+          let taskId = ev.target.getAttribute("_id");
 
-        markTaskDone(taskId);
-        markCardDone(taskId);
-        addDoneIcon(taskId);
+          markTaskDone(taskId);
+          markCardDone(taskId);
+          addDoneIcon(taskId);
 
       
       }
@@ -206,11 +206,11 @@ document.addEventListener( "DOMContentLoaded", function () {
 
       function registerCardEvents() {
 
-        let cards = document.getElementsByClassName("card");
+          let cards = document.getElementsByClassName("card");
 
-        if (cards.length > 0) {
-          for (let card of cards) {
-            card.addEventListener("click", doneTask);
+          if (cards.length > 0) {
+              for (let card of cards) {
+              card.addEventListener("click", doneTask);
           }
         }
 
@@ -220,13 +220,13 @@ document.addEventListener( "DOMContentLoaded", function () {
       function registerButtonEvents() {
 
         
-        let buttons_del = document.querySelectorAll(".list .card img");
-        if (buttons_del.length > 0) {
-          for (let bt_delete of buttons_del) {
-            bt_delete.addEventListener("click", deleteCard);
+          let buttons_del = document.querySelectorAll(".list .card img");
+          if (buttons_del.length > 0) {
+              for (let bt_delete of buttons_del) {
+              bt_delete.addEventListener("click", deleteCard);
           }
 
-        }
+      }
 
         let bt_add = document.querySelector(".section-form button");
 
@@ -240,22 +240,22 @@ document.addEventListener( "DOMContentLoaded", function () {
         //checar se task ja ta completa ou nao para add a classe css
         //check if task is done or not to add the css class
 
-        if (!card) { return; }
+          if (!card) { return; }
 
     
-        let textTask = document.querySelector('.section-form input[type="text"]');
+          let textTask = document.querySelector('.section-form input[type="text"]');
 
-        let list     = document.querySelector(".list"); //adicionar o card criado aqui
+          let list     = document.querySelector(".list"); //adicionar o card criado aqui
 
-        let ncard    = document.createElement("div");
+          let ncard    = document.createElement("div");
 
-        ncard.classList.add("card");
+          ncard.classList.add("card");
 
-        ncard.setAttribute("_id", card._id);
+          ncard.setAttribute("_id", card._id);
 
-        if (card.done) {
+          if (card.done) {
 
-          ncard.classList.add("done");
+              ncard.classList.add("done");
 
         }
 
@@ -271,13 +271,15 @@ document.addEventListener( "DOMContentLoaded", function () {
             doneIcon.src ="img/ok.png";  
             doneIcon.classList.add("img-done");
            
-            if(card.done) {
+        if(card.done) {
              
-             doneIcon.style.display = 'block';
-            } else {
-              doneIcon.style.display = 'none';
+          doneIcon.style.display = 'block';
+
+        } else {
+
+          doneIcon.style.display = 'none';
               
-            }
+        }
             
            
         
@@ -293,47 +295,52 @@ document.addEventListener( "DOMContentLoaded", function () {
 
       function createTask(taskDesc = "") {
 
-        let _id = genId();
-        let task = { _id: _id, desc: taskDesc, done: false };
+          let _id = genId();
+          let task = { _id: _id, desc: taskDesc, done: false };
 
-        ArTasks.push(task);
+          ArTasks.push(task);
 
-        saveTasksDb();
-        updateProgressBar();
-        return task;
+          saveTasksDb();
+          updateProgressBar();
+          return task;
 
       }
 
-      // addTask() -> createTask() -> createCard() -> loadTasks()
+     
       function addTask(ev) {
 
-        ev.preventDefault();
+          ev.preventDefault();
 
-        let textTask = document.querySelector('.section-form input[type="text"]');
+          let textTask = document.querySelector('.section-form input[type="text"]');
 
-        if (textTask.value == "") {
-          alert("insira a descrição da tarefa");
-          return;
+          if (textTask.value == "") {
+
+              alert("insira a descrição da tarefa");
+              return;
+
         }
+
         let task = createTask(textTask.value);
         createCard(task);
 
         initApp();
+
       }
 
 
       function updateProgressBar(){
 
-           let total = ArTasks.length;
-           let done = ArTasks.filter(tsk => !tsk.done).length;
+          let total = ArTasks.length;
+          let done = ArTasks.filter(tsk => !tsk.done).length;
 
-           let progress =  Math.round((done / total) * 100) || 0;
+          let progress =  Math.round((done / total) * 100) || 0;
 
-           let progressBar = document.querySelector('.tasks-progress .progress-bar');
-           progressBar.style.width = `${progress}%`;
+          let progressBar = document.querySelector('.tasks-progress .progress-bar');
+          progressBar.style.width = `${progress}%`;
 
           let progressValue = document.querySelector('.tasks-progress .progress-value');
           progressValue.textContent =  `${progress}%`;
+
       }
 
     
